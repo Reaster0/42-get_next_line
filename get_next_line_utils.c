@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/18 18:08:19 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/19 13:05:46 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char    *ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
 	ft_strlcpy(result + ft_strlen(s1), s2, ft_strlen(s2) + 1);
-	return (result)
+	return (result);
 }
 
 size_t  ft_strlcpy(char *dest, const char *src, size_t size)
@@ -70,3 +70,21 @@ size_t  ft_strlcpy(char *dest, const char *src, size_t size)
 	return (ft_strlen(src));
 }
 
+size_t      ft_strlen(const char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}          
+
+char    *ft_strdup(const char *s)
+{
+	char *result;
+
+	result = malloc((ft_strlen(s) + 1) * sizeof(char));
+	ft_strlcpy(result, s, ft_strlen(s) + 1);
+	return (result);
+}       
