@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:48:55 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/20 15:22:21 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/20 22:00:13 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,36 @@
 
 int		get_next_line(int fd, char **line)
 {
-	char		buf[BUFFER_SIZE + 1];
 	size_t 		i;
-	static void	*rest;
+	static char	*rest;
 	char		*temp;
+	char		buf[BUFFER_SIZE + 1];
 
-	i = 0;
-	if (read(fd, buf, BUFFER_SIZE) < 0)
-		return (-1);
-	if ((char *)rest)
+	if (ft_line(rest))
 	{
-		temp = ft_strjoin((char *)rest, (char *)buf);
+		*line = malloc(ft_line(rest) * sizeof(char *));
+		ft_strlcpy(*line, rest, ft_line(rest));
 	}
-	else
-		temp = ft_strdup((char *)buf);
-	while (temp[i])
-	{	
-		i++;
-		if (temp[i] == '\n')
-			break ;
-	}
-	*line = malloc((i) * sizeof(char));
-	if (!(ft_strlcpy(*line, temp, i + 1 )))
-		return (-1); 
-	if (rest)
+	else if (rest)
+	{
+		read(fd, buf, BUFFER_SIZE);
+		temp = ft_strdup(rest);
 		free(rest);
-	rest = malloc((ft_strlen(temp + i) + 1) * sizeof(char));
-	if (temp[i] = '\n')
-		ft_strlcpy((char *)rest, temp + i + 1,ft_strlen(temp + i + 1) + 1);
+		rest = ft_strjoin(rest, buf);
+		*line = malloc(ft_line(rest) * sizeof(char *));
+		if (ft_line(rest))
+		{
+			ft_strlcpy(*line, rest,ft_line(rest));
+			free(rest);
+			rest = ft_strdup(temp + ft_line(temp) + 1);
+		}
+		else
+		{
+			ft_strlcpy(*line, rest,ft_strlen(rest) + 1);
+			free(rest)
+		}
+	}
 	else
-		ft_strlcpy((char *)rest, temp + i, ft_strlen(temp + i) + 1);
-	free(temp);
-	return (1);
+	{
+	}
 }

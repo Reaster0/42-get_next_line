@@ -6,39 +6,11 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/19 13:05:46 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/20 22:00:41 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void    ft_putstr_fd(char *s, int fd)
-{
-	size_t i;
-
-	i = 0;
-	while (s[i])
-		write(fd, &s[i++], 1);
-}
-
-void    *ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t              i;
-	unsigned char       *pdest;
-	const unsigned char *psrc;
-
-	psrc = src;
-	pdest = dest;
-	i = 0;
-	if (!pdest && !psrc)
-		return (0);
-	while (i < n)
-	{
-		pdest[i] = psrc[i];
-		i++;
-	}
-	return (dest);
-}
 
 char    *ft_strjoin(char const *s1, char const *s2)
 {
@@ -87,4 +59,18 @@ char    *ft_strdup(const char *s)
 	result = malloc((ft_strlen(s) + 1) * sizeof(char));
 	ft_strlcpy(result, s, ft_strlen(s) + 1);
 	return (result);
-}       
+}
+
+size_t		ft_line(const char *s)
+{
+	size_t i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
