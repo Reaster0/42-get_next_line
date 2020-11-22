@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/21 15:49:29 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/22 11:41:54 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char    *ft_strdup(const char *s)
 	return (result);
 }
 
-size_t		ft_line(const char *s)
+long int	ft_line(const char *s)
 {
 	size_t i;
 
