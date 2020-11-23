@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:49:51 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/22 10:43:38 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/23 18:48:54 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ char	*ft_strdup(const char *s);
 long int	ft_line(const char *s);
 char	*ft_afterline(char *s);
 void	ft_putstr_fd(char *s, int fd);
+int		ft_sendline_next(char **line, char *rest);
 
 #endif
