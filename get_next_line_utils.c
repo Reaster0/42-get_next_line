@@ -6,11 +6,12 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/22 11:41:54 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/23 14:42:00 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 char    *ft_strjoin(char const *s1, char const *s2)
 {
@@ -82,9 +83,9 @@ char	*ft_afterline(char *s)
 {
 	char *temp;
 
-	if (!(temp = ft_strdup(s + ft_line(s) + 1)))
-		return (NULL);
+	temp = ft_strdup(s + ft_line(s) + 1);
 	free(s);
+	printf("\ndans afterline temp =%s\n",temp);
 	return (temp);
 }
 
