@@ -6,12 +6,11 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:48:55 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/24 14:22:21 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/24 14:59:45 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 int		ft_check_error(char **line,int fd)
 {

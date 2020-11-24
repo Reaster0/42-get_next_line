@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/24 11:23:50 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/24 14:50:53 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,4 @@ char	*ft_afterline(char *s)
 	temp = ft_strdup(s + ft_line(s) + 1);
 	free(s);	
 	return (temp);
-}
-
-void    ft_putstr_fd(char *s, int fd)
-{
-	size_t i;
-
-	i = 0;
-	while (s[i])
-		write(fd, &s[i++], 1);
 }
