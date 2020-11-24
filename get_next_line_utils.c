@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/23 18:17:44 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/24 11:23:50 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ char	*ft_afterline(char *s)
 {
 	char *temp;
 
+	if (!(ft_line(s) + 1))
+		return (NULL);
 	temp = ft_strdup(s + ft_line(s) + 1);
 	free(s);	
 	return (temp);
