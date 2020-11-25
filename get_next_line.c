@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:48:55 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/24 14:59:45 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/26 00:14:21 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		get_next_line(int fd, char **line)
 	char		*temp;
 	char		buf[BUFFER_SIZE + 1];
 	int			ret = 1;
+	int			read_ret;
 
 	if (ft_check_error(line, fd) == -1)
 		return (-1);
@@ -53,17 +54,19 @@ int		get_next_line(int fd, char **line)
 		ft_strlcpy(*line, rest, ft_line(rest) + 1);
 		if (rest + ft_line(rest) + 1)
 			rest = ft_afterline(rest);
-	} 
+	}
 	else
 	{
 		while (ft_line(rest) == -1)
 		{
-			if (!read(fd, buf, BUFFER_SIZE))
+			read_ret = read(fd, buf, BUFFER_SIZE);
+			if (!read_ret)
 			{
-				if (!*rest)
+				if (ft_line(rest) == -1)
 					ret = 0;
 				break ;
 			}
+			buf[read_ret] = '\0';
 			if (!(temp = ft_strdup(rest)))
 				return (-1);
 			free(rest);
