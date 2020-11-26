@@ -6,24 +6,33 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/24 14:50:53 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/26 14:26:04 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin_sp(char **s1, char const *s2)
 {
-	char *result;
+	char	*result;
+	char	*temp;
 
-	if (!(result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char))))
+	if (!(temp = ft_strdup(*s1)))
 		return (0);
-	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
-	ft_strlcpy(result + ft_strlen(s1), s2, ft_strlen(s2) + 1);
+	free(*s1);
+	if (!(result = malloc((ft_strlen(temp) + ft_strlen(s2) + 1)
+					* sizeof(char))))
+	{
+		free(temp);
+		return (0);
+	}
+	ft_strlcpy(result, temp, ft_strlen(temp) + 1);
+	ft_strlcpy(result + ft_strlen(temp), s2, ft_strlen(s2) + 1);
+	free(temp);
 	return (result);
 }
 
-size_t  ft_strlcpy(char *dest, const char *src, size_t size)
+size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t i;
 
@@ -42,7 +51,7 @@ size_t  ft_strlcpy(char *dest, const char *src, size_t size)
 	return (ft_strlen(src));
 }
 
-size_t      ft_strlen(const char *str)
+size_t		ft_strlen(const char *str)
 {
 	size_t i;
 
@@ -50,9 +59,9 @@ size_t      ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}          
+}
 
-char    *ft_strdup(const char *s)
+char		*ft_strdup(const char *s)
 {
 	char *result;
 
@@ -76,15 +85,4 @@ long int	ft_line(const char *s)
 		}
 	}
 	return (-1);
-}
-
-char	*ft_afterline(char *s)
-{
-	char *temp;
-
-	if (!(ft_line(s) + 1))
-		return (NULL);
-	temp = ft_strdup(s + ft_line(s) + 1);
-	free(s);	
-	return (temp);
 }
