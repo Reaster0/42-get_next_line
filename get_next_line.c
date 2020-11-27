@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:48:55 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/26 14:25:43 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/27 12:03:23 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,11 @@ int		get_next_line(int fd, char **line)
 	}
 	else
 	{
-		ret = ft_read_buf(&rest, line, fd);
+		if (!(ret = ft_read_buf(&rest, line, fd)))
+		{
+			free(rest);
+			rest = NULL;
+		}
 	}
 	return (ret);
 }
