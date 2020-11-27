@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:48:55 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/27 12:14:57 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/27 13:03:28 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,28 +76,28 @@ int		ft_read_buf(char **rest, char **line, int fd)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*rest;
+	static char	*rest[OPEN_MAX];
 	int			ret;
 
 	ret = 1;
 	if (ft_check_error(line, fd) == -1)
 		return (-1);
-	if (!rest)
-		rest = ft_strdup("");
-	if (ft_line(rest) >= 0)
+	if (!rest[fd])
+		rest[fd] = ft_strdup("");
+	if (ft_line(rest[fd]) >= 0)
 	{
-		if (!(*line = malloc(ft_line(rest) * sizeof(char *))))
+		if (!(*line = malloc(ft_line(rest[fd]) * sizeof(char *))))
 			return (-1);
-		ft_strlcpy(*line, rest, ft_line(rest) + 1);
-		if (rest + ft_line(rest) + 1)
-			rest = ft_afterline(rest);
+		ft_strlcpy(*line, rest[fd], ft_line(rest[fd]) + 1);
+		if (rest[fd] + ft_line(rest[fd]) + 1)
+			rest[fd] = ft_afterline(rest[fd]);
 	}
 	else
 	{
-		if (!(ret = ft_read_buf(&rest, line, fd)))
+		if (!(ret = ft_read_buf(&rest[fd], line, fd)))
 		{
-			free(rest);
-			rest = NULL;
+			free(rest[fd]);
+			rest[fd] = NULL;
 		}
 	}
 	return (ret);

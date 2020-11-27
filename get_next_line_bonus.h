@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:49:51 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/27 12:20:08 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/11/27 12:59:50 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_BONUS_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 int			get_next_line(int fd, char **line);
 char		*ft_strjoin_sp(char **s1, char const *s2);
