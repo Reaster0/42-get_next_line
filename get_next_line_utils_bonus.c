@@ -6,22 +6,21 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 14:23:32 by earnaud           #+#    #+#             */
-/*   Updated: 2020/11/27 12:16:38 by earnaud          ###   ########.fr       */
+/*   Updated: 2020/12/17 15:09:22 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char		*ft_strjoin_sp(char **s1, char const *s2)
+char *ft_strjoin_sp(char **s1, char const *s2)
 {
-	char	*result;
-	char	*temp;
+	char *result;
+	char *temp;
 
 	if (!(temp = ft_strdup(*s1)))
 		return (0);
 	free(*s1);
-	if (!(result = malloc((ft_strlen(temp) + ft_strlen(s2) + 1)
-					* sizeof(char))))
+	if (!(result = malloc((ft_strlen(temp) + ft_strlen(s2) + 1) * sizeof(char))))
 	{
 		free(temp);
 		return (0);
@@ -32,7 +31,7 @@ char		*ft_strjoin_sp(char **s1, char const *s2)
 	return (result);
 }
 
-size_t		ft_strlcpy(char *dest, const char *src, size_t size)
+size_t ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t i;
 
@@ -51,7 +50,7 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 	return (ft_strlen(src));
 }
 
-size_t		ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
 	size_t i;
 
@@ -61,16 +60,17 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-char		*ft_strdup(const char *s)
+char *ft_strdup(const char *s)
 {
 	char *result;
 
-	result = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!(result = malloc((ft_strlen(s) + 1) * sizeof(char))))
+		return (NULL);
 	ft_strlcpy(result, s, ft_strlen(s) + 1);
 	return (result);
 }
 
-long int	ft_line(const char *s)
+long int ft_line(const char *s)
 {
 	size_t i;
 
